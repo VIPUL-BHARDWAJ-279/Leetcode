@@ -37,7 +37,7 @@ public:
         q.push({0,0,-1}) ;// {Node , Step Count , Previous Edge Color}
 
         while(!q.empty()){
-            auto node=q.front()[0],steps=q.front()[1],prevColor=q.front()[2];
+            int node=q.front()[0],steps=q.front()[1],prevColor=q.front()[2];
             q.pop();
 
             for(auto & it:adj[node]){

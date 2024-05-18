@@ -23,6 +23,7 @@ public:
     //     }
     // }
     vector<int> shortestAlternatingPaths(int n, vector<vector<int>>& redEdges, vector<vector<int>>& blueEdges) {
+        ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
         vector<int> ans(n,-1);
         vector<vector<pair<int,bool>>> adj(n);
         for(auto x:redEdges)adj[x[0]].push_back({x[1],false});

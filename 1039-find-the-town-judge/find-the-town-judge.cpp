@@ -10,7 +10,12 @@ public:
             int k=0;
             for(int i=1;i<n+1;i++){
                 if(i!=ind){
-                    for(int j=0;j<adj[i].size();j++)if(adj[i][j]==ind)k++;
+                    for(int j=0;j<adj[i].size();j++){
+                        if(adj[i][j]==ind){
+                            k++;
+                            break;
+                        }   
+                    }
                 }
             }
             if(k==n-1)return ind;

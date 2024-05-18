@@ -1,6 +1,7 @@
 class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) {
+        ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
         vector<vector<int>> adj(n+1);
         for(auto x:trust)adj[x[0]].push_back(x[1]);
         int cnt=0,ind=-1;

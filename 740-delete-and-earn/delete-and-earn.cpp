@@ -2,15 +2,14 @@ class Solution {
 public:
 
     int deleteAndEarn(vector<int>& nums) {
-        int maxi=INT_MIN;
-        for(int i=0;i<nums.size();i++)maxi=max(maxi,nums[i]);
-
-        vector<int> sumi(maxi+1,0);
-        for(int i=0;i<nums.size();i++)sumi[nums[i]]+=nums[i];
-
-        for(int i=2;i<sumi.size();i++){
-            sumi[i]=max(sumi[i-1],sumi[i-2]+sumi[i]);
+        vector<int> bucket(10001);
+        for(auto num:nums)bucket[num]+=num;
+        int prev1=0,prev2=0;
+        for(auto num:bucket){  // variable order is == [prev2,prev1,dp]
+            int dp=max(prev1,prev2+num);
+            prev2=prev1;
+            prev1=dp;
         }
-        return sumi.back();
+        return prev1;
     }
 };

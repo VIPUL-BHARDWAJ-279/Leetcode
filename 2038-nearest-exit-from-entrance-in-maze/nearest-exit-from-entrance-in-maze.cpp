@@ -9,6 +9,7 @@ public:
         return false;
     }
     int nearestExit(vector<vector<char>>& maze, vector<int>& root) {
+        ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL);
         int m=maze.size(),n=maze[0].size();
         vector<vector<bool>> vis(m,vector<bool>(n,false));
         queue<vector<int>> q;
@@ -19,9 +20,7 @@ public:
             int i=q.front()[0],j=q.front()[1];
             steps=q.front()[2];
             q.pop();
-            if(isBoundaryPoint(i,j,m,n) && !isEntrance(i,j,root)){
-                return steps;
-            }
+            if(isBoundaryPoint(i,j,m,n) && !isEntrance(i,j,root))return steps;
 
             for(int k=0;k<4;k++){
                 int newi=i+direction[k][0];

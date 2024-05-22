@@ -7,6 +7,8 @@ public:
         else return dp[s][e]=0;
     }
     string longestPalindrome(string s) {
+        ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
+
         int n=s.size();
         vector<vector<int>> dp(n,vector<int>(n,-1));
 

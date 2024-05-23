@@ -13,18 +13,10 @@ public:
 
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(mat[i][j]==1){
-                    for(auto dir:directions){
-                        int nx=i+dir[0],ny=j+dir[1];
-                        if(inBoundary(nx,ny,m,n) && mat[nx][ny]==0){
-                            q.push({i,j});
-                            vis[i][j]=true;
-                            break;
-                        }
-                    }
+                if(mat[i][j]==0){
+                    q.push({i,j});
+                    vis[i][j]=true;
                 }
-                else vis[i][j]=true;
-
             }
         }
         int level=0;
@@ -35,8 +27,8 @@ public:
                 q.pop();
                 for(auto dir:directions){
                     int nx=x+dir[0],ny=y+dir[1];
-                    if(inBoundary(nx,ny,m,n) && mat[nx][ny]>0 && !vis[nx][ny]){
-                        mat[nx][ny]=level+2;
+                    if(inBoundary(nx,ny,m,n) && mat[nx][ny]==1 && !vis[nx][ny]){
+                        ans[nx][ny]=level+1;
                         vis[nx][ny]=true;
                         q.push({nx,ny});
                     }
@@ -44,6 +36,6 @@ public:
             }
             level++;
         }
-        return mat;
+        return ans;
     }
 };

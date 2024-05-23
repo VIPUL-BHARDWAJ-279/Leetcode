@@ -4,10 +4,12 @@ public:
         return (i>=0 && j>=0 && i<m && j<n);
     }
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        
         ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL);
 
         int m=mat.size(),n=mat[0].size();
-        vector<vector<int>>ans(m,vector<int>(n,0)),directions={{0,1},{1,0},{0,-1},{-1,0}};
+        vector<vector<int>>ans(m,vector<int>(n,0));
+        vector<pair<int,int>> directions={{0,1},{1,0},{0,-1},{-1,0}};
         vector<vector<bool>>vis(m,vector<bool>(n,false));
         queue<pair<int,int>>q;
 
@@ -23,10 +25,9 @@ public:
         while(!q.empty()){
             int siz=q.size();
             while(siz--){
-                int x=q.front().first,y=q.front().second;
-                q.pop();
-                for(auto dir:directions){
-                    int nx=x+dir[0],ny=y+dir[1];
+                auto [x,y]=q.front();q.pop();
+                for(auto [dirX,dirY]:directions){
+                    int nx=x+dirX, ny=y+dirY;
                     if(inBoundary(nx,ny,m,n) && mat[nx][ny]==1 && !vis[nx][ny]){
                         ans[nx][ny]=level+1;
                         vis[nx][ny]=true;

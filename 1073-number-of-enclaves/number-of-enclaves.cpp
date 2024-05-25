@@ -4,14 +4,14 @@ public:
     bool onBoundary(int i, int j, int & m, int & n){
         return (i==0 || j==0 || i==m-1 || j==n-1);
     }
-    bool inBoundary(int i, int j, int & m, int & n){
+    bool inBoundary(int & i, int & j, int & m, int & n){
         return (i>=0 && j>=0 && i<=m-1 && j<=n-1);
     }
     void dfs(int i,int j,int & m,int & n, vector<vector<bool>> & vis ,vector<vector<int>> & grid){
         vis[i][j]=true;
         for(auto & [dx,dy]:directions){
             int nx=i+dx,ny=j+dy;
-            if( inBoundary(nx,ny,m,n) && grid[nx][ny]==1 && !vis[nx][ny])dfs(nx,ny,m,n,vis,grid);
+            if(inBoundary(nx,ny,m,n) && grid[nx][ny]==1 && !vis[nx][ny])dfs(nx,ny,m,n,vis,grid);
         }
     }
     int numEnclaves(vector<vector<int>>& grid) {

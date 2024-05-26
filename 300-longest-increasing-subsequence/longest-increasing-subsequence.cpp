@@ -64,15 +64,15 @@ public:
         int n = a.size();
         vector<int> lisLen(n,1); // lisLen[i] will give length of lis from index 0 till index i
 
+        int maxLen=1;
         for(int i=0;i<n;i++){
             for(int j=0;j<i;j++){
                 if(a[j]<a[i]){
                     lisLen[i]=max(lisLen[i],lisLen[j]+1);
                 }
             }
+            maxLen=max(maxLen,lisLen[i]);
         }
-        int maxLen=1;
-        for(int i=0;i<n;i++)maxLen=max(maxLen,lisLen[i]);
         return maxLen;
     }
 

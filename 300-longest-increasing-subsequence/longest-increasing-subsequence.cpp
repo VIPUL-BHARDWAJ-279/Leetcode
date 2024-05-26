@@ -15,21 +15,40 @@ public:
     //     return lis(0,-1,a,dp);
     // }
 
-    int lengthOfLIS(vector<int>& a){
-        int n=a.size();
-        vector<vector<int>> dp(n+1,vector<int>(n+1,0));
+    // int lengthOfLIS(vector<int>& a){ //tabulation
+    //     int n=a.size();
+    //     vector<vector<int>> dp(n+1,vector<int>(n+1,0)); // here we have done coordinate shifting for 'top' as it ranges from -1 to n-1
+    //                                                     // therefore to make it from 0 to n, we always add '1' to everything written in second dimension of dp
 
-        for(int j=0;j<n+1;j++)dp[n][j]=0;
+    //     for(int j=0;j<n+1;j++)dp[n][j]=0;
+
+    //     for(int ind=n-1;ind>=0;ind--){
+    //         for(int top=ind-1;top>=-1;top--){
+    //             int take=0;
+    //             if(top==-1 || a[ind]>a[top])take=1+dp[ind+1][ind+1];
+    //             int notTake=dp[ind+1][top+1];
+    //             dp[ind][top+1]=max(take,notTake);
+    //         }
+    //     }
+    //     return dp[0][-1+1];
+    // }
+
+    int lengthOfLIS(vector<int>& a){ //tabulation + space optimization
+        int n=a.size();
+        vector<int> curr(n+1,0),nexti(n+1,0); // here we have done coordinate shifting for 'top' as it ranges from -1 to n-1
+                                                        // therefore to make it from 0 to n, we always add '1' to everything written in second dimension of dp
+
 
         for(int ind=n-1;ind>=0;ind--){
             for(int top=ind-1;top>=-1;top--){
                 int take=0;
-                if(top==-1 || a[ind]>a[top])take=1+dp[ind+1][ind+1];
-                int notTake=dp[ind+1][top+1];
-                dp[ind][top+1]=max(take,notTake);
+                if(top==-1 || a[ind]>a[top])take=1+nexti[ind+1];
+                int notTake=nexti[top+1];
+                curr[top+1]=max(take,notTake);
             }
+            nexti=curr;
         }
-        return dp[0][-1+1];
+        return nexti[-1+1];
     }
     // int lengthOfLIS(vector<int>& a) {
         // int n=a.size();

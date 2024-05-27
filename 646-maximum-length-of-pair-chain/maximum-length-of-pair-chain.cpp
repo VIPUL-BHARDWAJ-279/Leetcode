@@ -17,13 +17,11 @@ public:
         return a[1]<b[1];
     }
     int findLongestChain(vector<vector<int>>& pairs){
+        ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL);
         sort(pairs.begin(),pairs.end(),compi);
         int ans=1,prevEnd=pairs[0][1];
-        for(int i=1;i<pairs.size();i++){
-            int currStart=pairs[i][0];
-            if(prevEnd<currStart)prevEnd=pairs[i][1],ans++;
-        }
-        return ans;
 
+        for(int i=1;i<pairs.size();i++)if(prevEnd<pairs[i][0])prevEnd=pairs[i][1],ans++;
+        return ans;
     }
 };

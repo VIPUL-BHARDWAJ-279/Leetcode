@@ -2,6 +2,7 @@ class Solution {
 public:
 
     int longestArithSeqLength(vector<int>& nums) {
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
         int n=nums.size(),maxLen=2;
         vector<vector<int>> t(n,vector<int>(1001,0)); // common diff € [0,500] therefore, add 500 to each common difference for coordinate shifting
 

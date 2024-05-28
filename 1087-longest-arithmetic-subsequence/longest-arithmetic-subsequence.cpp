@@ -1,30 +1,18 @@
 class Solution {
 public:
-    // int lis(int ind, int top,int & difference, vector<int> & a, vector<vector<int>> & dp){ //top == previous taken index
-    //     if(ind==a.size())return 0; // here we are returning the size of the lis from index=ind to index=a.size()-1
-    //     if(dp[ind][top+1]!=-1)return dp[ind][top+1];
-    //     int len= 0+lis(ind+1,top,difference,a,dp);
-    //     if(top==-1 || a[ind]-a[top]==difference)len=max(len,1+lis(ind+1,ind,difference,a,dp));
-    //     return dp[ind][top+1]= len;
-    // }
-    // int longestSubsequence(vector<int>& a, int difference){
-    //     vector<vector<int>> dp(n+1,vector<int>(n+1,0));
-    //     return lis(0,-1,difference,a,dp);
-    // }
-    int x(vector<int> & nums,int & difference){
-        unordered_map<int,int> length;
-        int ans=1;
-        for(auto x:nums){
-            ans=max(ans,length[x]=1+length[x-difference]);
-        }
-        return ans;
-    }
+
     int longestArithSeqLength(vector<int>& nums) {
-        int diff=0,maxEle=*max_element(nums.begin(),nums.end()),maxLen=1;
-        int minEle=-maxEle;
-        while(minEle<=maxEle){
-            maxLen=max(maxLen,x(nums,minEle));
-            minEle++;
+        int n=nums.size(),maxLen=2;
+        vector<vector<int>> t(n,vector<int>(1001,0)); // common diff € [0,500] therefore, add 500 to each common difference for coordinate shifting
+
+        for(int i=1;i<n;i++){
+            for(int j=0;j<i;j++){
+                int diff=nums[i]-nums[j]+500; // To avoid negative index of dp
+                if(t[j][diff]>0)t[i][diff] = t[j][diff]+1;
+                else t[i][diff]=2;
+                maxLen=max(maxLen,t[i][diff]);
+
+            }
         }
         return maxLen;
     }

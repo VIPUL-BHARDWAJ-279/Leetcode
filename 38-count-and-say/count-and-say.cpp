@@ -20,16 +20,22 @@ public:
         return ans;
     }
 
-    string CandS(int n, vector<string> & dp){
+    string countAndSay(int n){
         if(n==1)return "1";
-        if(dp[n]!="")return dp[n];
-
-        string temp=CandS(n-1,dp);
-        return dp[n]=RLE(temp);
+        string temp=countAndSay(n-1);
+        return RLE(temp);
     }
 
-    string countAndSay(int n) {
-        vector<string> dp(n+1,"");
-        return CandS(n,dp);
-    }
+    // string CandS(int n, vector<string> & dp){
+    //     if(n==1)return "1";
+    //     if(dp[n]!="")return dp[n];
+
+    //     string temp=CandS(n-1,dp);
+    //     return dp[n]=RLE(temp);
+    // }
+
+    // string countAndSay(int n) {
+    //     vector<string> dp(n+1,"");
+    //     return CandS(n,dp);
+    // }
 };

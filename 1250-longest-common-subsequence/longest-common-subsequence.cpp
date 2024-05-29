@@ -36,7 +36,7 @@ public:
 
 
     int longestCommonSubsequence(string s, string t){
-        
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
         int n=s.size(),m=t.size();
         vector<int> nexti(m+1,0),curri(m+1,0);
 

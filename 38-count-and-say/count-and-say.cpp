@@ -23,6 +23,7 @@ public:
     string CandS(int n, vector<string> & dp){
         if(n==1)return "1";
         if(dp[n]!="")return dp[n];
+        
         string temp=CandS(n-1,dp);
         return dp[n]=RLE(temp);
     }

@@ -23,13 +23,13 @@ public:
     string CandS(int n, vector<string> & dp){
         if(n==1)return "1";
         if(dp[n]!="")return dp[n];
-        
+
         string temp=CandS(n-1,dp);
         return dp[n]=RLE(temp);
     }
 
     string countAndSay(int n) {
-        vector<string> dp(31,"");
+        vector<string> dp(n+1,"");
         return CandS(n,dp);
     }
 };

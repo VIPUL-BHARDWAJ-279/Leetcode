@@ -14,18 +14,39 @@ public:
     //     return solve(0,0,s,t);
     // }
 
+
+
+
+
+    // int longestCommonSubsequence(string s, string t){
+        
+    //     int n=s.size(),m=t.size();
+    //     vector<vector<int>> dp(n+1,vector<int>(m+1,0));
+
+    //     for(int i=n-1;i>=0;i--){
+    //         for(int j=m-1;j>=0;j--){
+    //             if(s[i]==t[j])dp[i][j]=1+dp[i+1][j+1];
+    //             else dp[i][j]=max(dp[i+1][j],dp[i][j+1]);
+    //         }
+    //     }
+    //     return dp[0][0];
+    // }
+
+
+
+
     int longestCommonSubsequence(string s, string t){
         
         int n=s.size(),m=t.size();
-        vector<vector<int>> dp(n+1,vector<int>(m+1,0));
+        vector<int> nexti(m+1,0),curri(m+1,0);
 
         for(int i=n-1;i>=0;i--){
             for(int j=m-1;j>=0;j--){
-                if(s[i]==t[j])dp[i][j]=1+dp[i+1][j+1];
-                else dp[i][j]=max(dp[i+1][j],dp[i][j+1]);
+                if(s[i]==t[j])curri[j]=1+nexti[j+1];
+                else curri[j]=max(nexti[j],curri[j+1]);
             }
+            nexti=curri;
         }
-        return dp[0][0];
-
+        return curri[0];
     }
 };

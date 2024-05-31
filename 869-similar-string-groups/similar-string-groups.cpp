@@ -2,18 +2,12 @@ class Solution {
 public:
     bool areSimilar(string & s, string & t){
         if(s.size()!=t.size())return false;
-        char a='?',b=';',x='!',y='>';
-        int cnt=0;
+        int diff=0;
         for(int i=0;i<s.size();i++){
-            if(s[i]!=t[i]){
-                if(cnt>2)return false;
-                cnt++;
-                if(cnt==1)a=s[i],b=t[i];
-                if(cnt==2)x=s[i],y=t[i];
-            }
+            if(s[i]!=t[i])diff++;
+            if(diff>2)return false;
         }
-        if(cnt==0 || ( cnt==2 && a==y && b==x))return true;
-        return false;
+        return (diff<=2);
     }
 
     void dfs(int node, vector<bool> & vis, vector<vector<int>> & adj){

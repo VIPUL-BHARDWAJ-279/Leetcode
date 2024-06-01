@@ -14,18 +14,33 @@ public:
     //     return solve(0,0,prices,dp);
     // }
 
+    // int maxProfit(vector<int>& prices) {
+    //     int n=prices.size();
+    //     int k=2;
+    //     vector<vector<int>> dp(n+1,vector<int>(2*k+1,0));
+
+    //     for(int day=n-1;day>=0;day--){
+    //         for(int tran=2*k-1;tran>=0;tran--){
+    //             if(tran % 2 == 0) dp[day][tran]=max(-prices[day] + dp[day+1][tran+1], dp[day+1][tran]);
+    //             else dp[day][tran]=max(prices[day] + dp[day+1][tran+1], dp[day+1][tran]);
+    //         }
+    //     }
+    //     return dp[0][0];
+        
+    // }
+
     int maxProfit(vector<int>& prices) {
         int n=prices.size();
         int k=2;
-        vector<vector<int>> dp(n+1,vector<int>(2*k+1,0));
-
+        vector<int> curr(2*k+1,0),nexti(2*k+1,0);
         for(int day=n-1;day>=0;day--){
             for(int tran=2*k-1;tran>=0;tran--){
-                if(tran % 2 == 0) dp[day][tran]=max(-prices[day] + dp[day+1][tran+1], dp[day+1][tran]);
-                else dp[day][tran]=max(prices[day] + dp[day+1][tran+1], dp[day+1][tran]);
+                if(tran % 2 == 0) curr[tran]=max(-prices[day] + nexti[tran+1], nexti[tran]);
+                else curr[tran]=max(prices[day] + nexti[tran+1], nexti[tran]);
             }
+            nexti=curr;
         }
-        return dp[0][0];
+        return curr[0];
         
     }
 };

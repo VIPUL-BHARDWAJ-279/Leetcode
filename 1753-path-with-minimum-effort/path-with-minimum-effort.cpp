@@ -13,15 +13,17 @@ public:
 
         while(!seti.empty()){
             vector<int> curr = *(seti.begin());     
-            int x=curr[0], y=curr[1], maxEffortTillNow=curr[2];
             seti.erase(curr);
+
+            int x=curr[0], y=curr[1], maxEffortTillNow=curr[2];
             if(x==n-1 && y==m-1)return maxEffortTillNow;
+            
             for(auto [dx,dy]:directions){
                 int nx=x+dx, ny=y+dy;
                 if(nx>=0 && ny>=0 && nx<n && ny<m){
                     int newEffort=max(maxEffortTillNow,abs(heights[nx][ny]-heights[x][y]));
                     if(newEffort < effort[nx][ny]){
-                        if(effort[nx][ny] != 1e7)seti.erase({nx,ny,effort[nx][ny]});
+                        // if(effort[nx][ny] != 1e7)seti.erase({nx,ny,effort[nx][ny]});
 
                         effort[nx][ny]=newEffort;
                         seti.insert({nx,ny,newEffort});

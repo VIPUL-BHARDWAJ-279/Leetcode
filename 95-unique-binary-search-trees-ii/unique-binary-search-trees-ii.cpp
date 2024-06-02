@@ -11,12 +11,15 @@
  */
 class Solution {
 public:
+
+    map<pair<int,int>,vector<TreeNode*>> mp;
     vector<TreeNode *> solve(int start, int end){
         if(start>end)return {NULL};
         if(start==end){
             TreeNode * root=new TreeNode(start);
-            return {root};
+            return mp[{start,end}] = {root};
         }
+        if(mp.find({start,end})!=mp.end())return  mp[{start,end}];
 
         vector<TreeNode *> result;
 
@@ -37,9 +40,10 @@ public:
             }
         }
 
-        return result;
+        return  mp[{start,end}] = result;
     }
     vector<TreeNode *> generateTrees(int n) {
         return solve(1,n);
     }
+    
 };

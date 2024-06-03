@@ -26,7 +26,7 @@ public:
 
                     if(d+wt<dist[v]){
                         dist[v]=d+wt;
-                        q.push({v,d+wt});
+                        q.push({v,dist[v]});
                     }
                 }
             }

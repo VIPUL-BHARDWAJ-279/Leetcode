@@ -15,21 +15,21 @@ public:
     }
 
     void uniteByRank(int x, int y){
-        int parent_x=findPar(x), parent_y=findPar(y);
-        if(parent_x == parent_y)return;
+        int par_x=findPar(x), par_y=findPar(y);
+        if(par_x == par_y)return;
 
-        if(rank[parent_x]>rank[parent_y])parent[parent_y]=parent_x;
-        else if(rank[parent_x]<rank[parent_y])parent[parent_x]=parent_y;
-        else parent[parent_y]=parent_x, rank[parent_x]++;
+        if(rank[par_x]>rank[par_y])parent[par_y]=par_x;
+        else if(rank[par_x]<rank[par_y])parent[par_x]=par_y;
+        else parent[par_y]=par_x, rank[par_x]++;
     }
 
     void uniteBySize(int x, int y){
-        int parent_x=findPar(x), parent_y=findPar(y);
-        if(parent_x == parent_y)return;
+        int par_x=findPar(x), par_y=findPar(y);
+        if(par_x == par_y)return;
 
-        if(size[parent_x]>size[parent_y])parent[parent_y]=parent_x, size[parent_x]+=size[parent_y];
-        else if(size[parent_x]<size[parent_y])parent[parent_x]=parent_y, size[parent_y]+=size[parent_x];
-        else parent[parent_y]=parent_x , size[parent_x]+=size[parent_y];
+        if(size[par_x]>size[par_y])parent[par_y]=par_x, size[par_x]+=size[par_y];
+        else if(size[par_x]<size[par_y])parent[par_x]=par_y, size[par_y]+=size[par_x];
+        else parent[par_y]=par_x , size[par_x]+=size[par_y];
     }
 
 };

@@ -12,6 +12,7 @@
 class Solution {
 public:
     TreeNode* searchBST(TreeNode* root, int val) {
+        ios::sync_with_stdio(false),cin.tie(0);
         if(!root)return NULL;
         if(root->val==val)return root;
 

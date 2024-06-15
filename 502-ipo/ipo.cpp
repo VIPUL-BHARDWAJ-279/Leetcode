@@ -8,11 +8,11 @@ public:
         sort(v.begin(),v.end());
         priority_queue<int> pq;
 
-        int j=0;
-        for(int i=0;i<k;i++){
-            while(j<n && v[j].first<=w){
-                pq.push(v[j].second);
-                j++;
+        int i=0;
+        while(k--){
+            while(i<n && v[i].first<=w){
+                pq.push(v[i].second);
+                i++;
             }
             if(pq.size()==0)break;
             w+=pq.top();

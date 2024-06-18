@@ -1,8 +1,8 @@
 class Solution {
 public:
     string convert(string s, int rows) {
-        int n=s.size();
         if(rows==1)return s;
+        int n=s.size();
         vector<vector<char>> adj(rows);
         bool uptodown=true;
         adj[0].push_back(s[0]);

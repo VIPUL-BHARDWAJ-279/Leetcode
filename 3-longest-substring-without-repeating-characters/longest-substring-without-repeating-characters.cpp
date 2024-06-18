@@ -4,21 +4,11 @@ public:
         int n=s.size(),start=0,end=0,maxi=0;
         unordered_map<char,int>mp;
         for(end=0;end<n;end++){
-            if(mp.find(s[end])==mp.end()){
-                mp[s[end]]=end;
-                maxi=max(maxi,end-start+1);
+            if(mp.find(s[end])!=mp.end()){ // current char pehle se hi hai
+                if(mp[s[end]]>=start)start=mp[s[end]]+1; // aur wo current window ke andar hai
             }
-            else{
-                if(mp[s[end]]>=start){
-                    start=mp[s[end]]+1;
-                    mp[s[end]]=end;
-                    maxi=max(maxi,end-start+1);
-                }
-                else{
-                    mp[s[end]]=end;
-                    maxi=max(maxi,end-start+1);
-                }
-            }
+            maxi=max(maxi,end-start+1);
+            mp[s[end]]=end;
         }
 
         return maxi;

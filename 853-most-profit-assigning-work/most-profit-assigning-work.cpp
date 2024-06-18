@@ -1,6 +1,8 @@
 class Solution {
 public:
     int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
+        
         vector<pair<int,int>> jobProfit;
         for(int i=0;i<profit.size();i++)jobProfit.push_back({difficulty[i],profit[i]});
         sort(jobProfit.begin(),jobProfit.end());

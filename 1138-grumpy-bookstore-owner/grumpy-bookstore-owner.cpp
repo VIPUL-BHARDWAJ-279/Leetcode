@@ -1,37 +1,22 @@
 class Solution {
 public:
     int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
-        int n=customers.size(),i=0;
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
+        
+        int n=customers.size(),s=0,unsat=0,maxUnsat=0,satisfied=0;
 
-        // for(int j=0;j<n;j++){
-        //     if()
-        // }
+        for(int e=0;e<n;e++){
+            satisfied+=customers[e]*(!grumpy[e]);
 
-
-
-
-        int start,end,s=0,e=0;
-        int unsat=0,maxUnsat=0,satisfied=0;
-        while(e<customers.size()){
             int siz=e-s+1;
-            if(siz<=minutes){
-                unsat+=customers[e]*grumpy[e];
-                e++;
-            }
+            if(siz<=minutes)unsat+=customers[e]*grumpy[e];
             else{
                 unsat+=customers[e]*grumpy[e];
-                e++;
-                unsat-=customers[s]*grumpy[s];
-                s++;   
+                unsat-=customers[s]*grumpy[s++];
             }
-            if(unsat>maxUnsat){
-                    start=s;
-                    end=e-1;
-                    maxUnsat=unsat;
-                }
+            if(unsat>maxUnsat)maxUnsat=unsat;
         }
 
-        for(int i=0;i<customers.size();i++)satisfied+=customers[i]*(!grumpy[i]);
         return satisfied+maxUnsat;
     }
 };

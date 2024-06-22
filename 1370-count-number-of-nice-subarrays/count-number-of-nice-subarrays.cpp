@@ -1,6 +1,8 @@
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
+        
         int n=nums.size(),oddCnt=0,ans=0;
         unordered_map<int,int> mp; // mp will store frequency of odd counts
         mp[0]=1; // we have seen '0' odd count 1 time as we are starting with oddCnt=0

@@ -6,7 +6,7 @@ public:
         mp[0]=1; // we have seen '0' odd count 1 time as we are starting with oddCnt=0
         for(int i=0;i<n;i++){
             if(nums[i]%2)oddCnt++;
-            if(mp.find(oddCnt-k)!=mp.end())ans+=mp[oddCnt-k];
+            ans+=mp[oddCnt-k];
             mp[oddCnt]++;
         }
         return ans;

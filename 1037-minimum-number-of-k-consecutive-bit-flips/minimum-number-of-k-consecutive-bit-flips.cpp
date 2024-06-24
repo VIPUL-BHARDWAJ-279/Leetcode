@@ -16,22 +16,41 @@ public:
     // }
 
 
+
+    // O(n) using map <---extra space
+    // int minKBitFlips(vector<int>& a, int k){
+    //     unordered_map<int,bool> mp;
+    //     int n=a.size(),result=0,flipcnt=0;;
+
+    //     for(int i=0;i<n;i++){
+    //         if(mp[i-k]==true)flipcnt--;
+
+    //         if(flipcnt%2==a[i]){
+    //             if(i+k>n)return -1;
+    //             flipcnt++;
+    //             result++;
+    //             mp[i]=true;
+    //         }
+    //     }
+    //     return result;
+    // }
+
+
+    // BEST APPROACH: O(n) <---NO EXTRA SPACE
+
     int minKBitFlips(vector<int>& a, int k){
-        unordered_map<int,bool> mp;
-        int n=a.size();
-        int result=0,flipcnt=0;
+        int n=a.size(),result=0,flipcnt=0;;
 
         for(int i=0;i<n;i++){
-            if(mp[i-k]==true)flipcnt--;
+            if(i>=k && a[i-k]==99)flipcnt--;
 
             if(flipcnt%2==a[i]){
                 if(i+k>n)return -1;
                 flipcnt++;
                 result++;
-                mp[i]=true;
+                a[i]=99;
             }
         }
-
         return result;
     }
 };

@@ -17,27 +17,18 @@ public:
 
 
     int minKBitFlips(vector<int>& a, int k){
-        unordered_map<int,int> mp;
+        unordered_map<int,bool> mp;
         int n=a.size();
         int result=0,flipcnt=0;
 
         for(int i=0;i<n;i++){
-            if(mp[i-k]>0)flipcnt--;
-            if(a[i]==0){
-                if(flipcnt%2==0){
-                    if(i+k>n)return -1;
-                    flipcnt++;
-                    result++;
-                    mp[i]++;
-                }
-            }
-            else{
-                if(flipcnt%2==1){
-                    if(i+k>n)return -1;
-                    flipcnt++;
-                    result++;
-                    mp[i]++;
-                }
+            if(mp[i-k]==true)flipcnt--;
+
+            if(flipcnt%2==a[i]){
+                if(i+k>n)return -1;
+                flipcnt++;
+                result++;
+                mp[i]=true;
             }
         }
 

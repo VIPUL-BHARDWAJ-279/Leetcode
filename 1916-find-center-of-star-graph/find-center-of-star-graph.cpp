@@ -1,15 +1,8 @@
 class Solution {
 public:
     int findCenter(vector<vector<int>>& edges) {
-        unordered_map<int,int> mp;
-        mp[edges[0][0]]++;
-        mp[edges[0][1]]++;
-        mp[edges[1][0]]++;
-        mp[edges[1][1]]++;
-        for(auto x:mp){
-            if(x.second==2)return x.first;
-        }
-        return -1;
-
+        ios_base::sync_with_stdio(false),cin.tie(NULL);
+        if(edges[0][0]==edges[1][0] || edges[0][0]==edges[1][1])return edges[0][0];
+        else return edges[0][1];
     }
 };

@@ -10,7 +10,7 @@ public:
         sort(degrees.begin(),degrees.end());
         int k=1;
         for(int i=0;i<n;i++){
-            ans+=(long long)(degrees[i]*1ll*k);
+            ans+=(degrees[i]*1ll*k);
             k++;
         }
         return ans;

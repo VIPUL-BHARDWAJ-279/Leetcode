@@ -16,9 +16,8 @@ public:
         addPlease(carry,l1->next,l2->next);
 
         int sum=l1->val+l2->val+carry;
-        int digit=sum%10;
+        l1->val=sum%10;
         carry=sum/10;
-        l1->val=digit;
     }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* h1=l1,*h2=l2;

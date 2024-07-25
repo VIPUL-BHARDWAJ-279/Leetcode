@@ -48,13 +48,13 @@ public:
                     curr=curr->next;
                 }
             }
-            while(i){
+            if(i){  // we used 'if' in place of 'while' as the remaining list is already connected
                 curr->next=i;
                 i=i->next;
                 curr=curr->next;
             }
 
-            while(j){
+            if(j){
                 curr->next=j;
                 j=j->next;
                 curr=curr->next;

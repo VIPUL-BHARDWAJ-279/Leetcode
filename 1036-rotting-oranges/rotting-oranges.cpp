@@ -16,6 +16,7 @@ public:
         
         while(!q.empty()){
             int siz=q.size();
+            level++;
             while(siz--){
                 auto [x,y]=q.front();q.pop();
                 
@@ -24,7 +25,6 @@ public:
                     if(nx>=0 && ny>=0 && nx<m && ny<n && grid[nx][ny]==1)grid[nx][ny]=2,q.push({nx,ny});
                 }
             }
-            level++;
         }
 
         for(int i=0;i<m;i++)for(int j=0;j<n;j++)if(grid[i][j]==1)return -1;

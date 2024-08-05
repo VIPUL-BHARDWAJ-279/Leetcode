@@ -4,7 +4,7 @@ public:
         unordered_map<string,int> mp;
         for(auto s:arr)mp[s]++;
         for(auto s:arr){
-            if(mp[s]==1) k--;
+            if(mp[s]==1) k--; // means the string is distinct
             if(k==0)return s;
         }
         return "";

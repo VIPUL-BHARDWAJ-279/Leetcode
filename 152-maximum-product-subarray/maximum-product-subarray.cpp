@@ -1,24 +1,26 @@
 class Solution {
 public:
-    int maxProduct(vector<int>& nums) {
-        int n=nums.size();
-        long pro=1,proUpToFirstNegi=1,ans=INT_MIN;
+    int maxProduct(vector<int>& a) {
+        long long proUptoFirstNegative=1,pro=1,ans=INT_MIN,n=a.size();
+
         for(int i=0;i<n;i++){
-            pro*=nums[i];
-            if(pro<0)ans=max(ans,pro*proUpToFirstNegi);
+            pro*=a[i];
+
+            if(pro<0)ans=max(ans,pro*proUptoFirstNegative);
             else ans=max(ans,pro);
 
-            if(nums[i]<0 && proUpToFirstNegi==1){
-                proUpToFirstNegi=pro;
+            if(a[i]<0 && proUptoFirstNegative==1){
+                proUptoFirstNegative=pro;
                 pro=1;
-            }
-            if(pro==0){
-                pro=1;
-                proUpToFirstNegi=1;
             }
 
+            if(a[i]==0){
+                proUptoFirstNegative=1;
+                pro=1;  
+            }
         }
-            
+
         return ans;
+
     }
 };

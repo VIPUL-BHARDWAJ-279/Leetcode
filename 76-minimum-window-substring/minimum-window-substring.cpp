@@ -22,9 +22,7 @@ public:
                     substrStart=i;
                 }
                 mp[s[i]]++;
-                if(mp[s[i]]>0){
-                    countReqd++;
-                }
+                if(mp[s[i]]>0)countReqd++;
                 i++;
             }
             j++;

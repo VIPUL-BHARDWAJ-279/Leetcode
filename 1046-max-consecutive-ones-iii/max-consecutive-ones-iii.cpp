@@ -7,12 +7,12 @@ public:
         while(r<n){
             if(a[r]==0)k--;
             if(k<0){
-                while(k<0 && l<n){
                     k+=!a[l];
                     l++;
-                }
+                // while(k<0 && l<n){
+                // }
             }
-            maxLen=max(maxLen,r-l+1);
+           if(k>=0) maxLen=max(maxLen,r-l+1);
             r++;
         }
         return maxLen;

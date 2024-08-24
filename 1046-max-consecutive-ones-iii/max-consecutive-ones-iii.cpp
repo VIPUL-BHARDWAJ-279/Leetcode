@@ -12,7 +12,7 @@ public:
                     l++;
                 }
             }
-           if(k>=0) maxLen=max(maxLen,r-l+1);
+            maxLen=max(maxLen,r-l+1);
             r++;
         }
         return maxLen;
